@@ -1,15 +1,28 @@
 import React from 'react';
 import './App.css';
 
-class Detail extends React.Component {
+// アプリケーション内で共通的に使用する型の定義
+type FeeClassfication = {
+  name: string;
+  description: string;
+  unitPrice: number;
+  numOfPeople: number;
+  totalPrice: number;
+}
+
+type DetailProps = {
+  classfication: FeeClassfication
+}
+
+class Detail extends React.Component<DetailProps, {}> {
   render() {
     return (
-      <div >
-        <div className="classification-name">名前</div>
-        <div className="description">説明</div>
-        <div className="unit-price">0円</div>
+      <div>
+        <div className="classification-name">{this.props.classfication.name}</div>
+        <div className="description">{this.props.classfication.description}</div>
+        <div className="unit-price">{this.props.classfication.unitPrice}円</div>
         <div className="num-people">
-          <select value="0">
+          <select value={this.props.classfication.numOfPeople}>
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -42,10 +55,20 @@ class Summary extends React.Component {
 }
 
 class AdmissionFeeCalculator extends React.Component {
+  private detail: DetailProps = {
+    classfication: {
+      name: "大人",
+      description: "",
+      unitPrice: 1000,
+      numOfPeople: 0,
+      totalPrice: 0
+    }
+  };
+
   render() {
     return (
       <>
-        <Detail />
+        <Detail classfication={this.detail.classfication}/>
         <Summary />
       </>
     );
