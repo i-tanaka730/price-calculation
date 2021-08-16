@@ -2,7 +2,7 @@
 
 ## Overview
 It is an react application that calculates charges.  
-Created for practicing react + typescript.
+Created for practicing React + TypeScript.
 
 ## Requirement
 
