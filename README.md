@@ -1,7 +1,7 @@
 # price-calculation
 
 ## Overview
-It is an react application that calculates charges.
+It is an react application that calculates charges.  
 Created for practicing react + typescript.
 
 ## Requirement
