@@ -1,3 +1,4 @@
+import { defaultCipherList } from 'constants';
 import React from 'react';
 import './App.css';
 
@@ -55,20 +56,55 @@ class Summary extends React.Component {
 }
 
 class AdmissionFeeCalculator extends React.Component {
-  private detail: DetailProps = {
-    classfication: {
-      name: "大人",
-      description: "",
-      unitPrice: 1000,
-      numOfPeople: 0,
-      totalPrice: 0
+  private details: DetailProps[] = [
+    {
+      classfication: {
+        name: "大人",
+        description: "",
+        unitPrice: 1000,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classfication: {
+        name: "学生",
+        description: "中学生・高校生",
+        unitPrice: 700,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classfication: {
+        name: "子供",
+        description: "小学生",
+        unitPrice: 300,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classfication: {
+        name: "幼児",
+        description: "未就学",
+        unitPrice: 0,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
     }
-  };
+  ];
 
   render() {
+    const detailsJsx = this.details.map((fc, idx) => {
+      return (
+        <Detail key={idx.toString()} classfication={fc.classfication} />
+      );
+    });
+
     return (
       <>
-        <Detail classfication={this.detail.classfication}/>
+        {detailsJsx}
         <Summary />
       </>
     );
