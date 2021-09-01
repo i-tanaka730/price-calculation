@@ -57,3 +57,7 @@ input.total-amount {
   margin-left: 5px;
   margin-right: 5px;
 }
+
+table.regularTable, th, td {
+  border: 1px solid;
+}
